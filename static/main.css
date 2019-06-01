@@ -5,8 +5,8 @@ html {
 
 body {
   line-height: 1.5;
-  background-color: #222525;
-  color: #eee;
+  background-color: #eee;
+  color: #222525;
 }
 
 *, *::after, *::before {
@@ -33,4 +33,44 @@ p {
 .error-main > i {
   font-size: 18em;
   color: red;
+}
+
+/* admin */
+.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin > i {
+  font-size: 18em;
+  color: orange;
+  margin: 2rem 2rem;
+}
+.adm-it {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.adm-it > label {
+  margin: 0 !important;
+  text-align: center !important;
+}
+.adm-it > input {
+  color: #222525;
+}
+.adm-but {
+  margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.adm-but > button {
+  margin: 0 !important;
+}
+
+/* console */
+.console {
+  font-size: 1.2rem !important;
 }
