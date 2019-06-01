@@ -16,10 +16,11 @@ class Admin {
     this.link = 'admindefault';
   }
 
-  public authAdmin(u:string, p:string) {
+  public authAdmin(u:string, p:string):Boolean {
     if (u === this.config.user && p === this.config.pawd) {
-      console.log('PASS');
+      return true;
     }
+    return false;
   }
 }
 
