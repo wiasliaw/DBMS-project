@@ -6,7 +6,7 @@ const config = {
   mode: process.env.NODE_ENV,
   admin: {
     user: 'tsperfect',
-    pawd: 'xddxddrrl',
+    pawd: '12345678',
   },
 };
 
