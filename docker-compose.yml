@@ -5,13 +5,20 @@ services:
     build: .
     ports:
       - "8080:8080"
-      - "9229:9229"
     env_file: .env
     volumes:
       - .:/usr/app/
 
   postgre:
-    image: postgres
+    image: bitnami/postgresql
     environment:
-      POSTGRES_PASSWORD: "cfgcmapy"
+      - POSTGRES_PASSWORD=cfgcmapy
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_DATABASE=project
+    restart: always
+    ports:
+      - "8001:5432"
+    volumes:
+      - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql"
+      - "./db/data:/bitnami"
     

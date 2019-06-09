@@ -1,5 +1,5 @@
 FROM node:10.15-stretch
-EXPOSE 8080 9229
+EXPOSE 8080
 
 WORKDIR /usr/app/
 
