@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS project.level (
 CREATE TABLE IF NOT EXISTS project.content (
 	paid VARCHAR(8),
 	coid VARCHAR(8) PRIMARY KEY NOT NULL,
-	craetetime TIMESTAMP,
+	createtime TIMESTAMP,
 	label VARCHAR(50),
 	docs VARCHAR(50)
 );

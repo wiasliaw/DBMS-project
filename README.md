@@ -78,7 +78,30 @@ ER-Model
 
 Relation Schema
 ---
+* User
 
+| <u>usid</u> | uname    | email    | passwd   | utype    | coin     | roleman  |
+| --------    | -------- | -------- | -------- | -------- | -------- | -------- |
+
+* Page
+
+| usid | <u>paid</u> | ptype    |
+| -----| --------    | -------- |
+
+* Level
+
+| <u>usid</u> | ltype    | starttime | expiretime | expirestamp |
+| --------    | -------- | --------  | --------   | --------    |
+
+* Content
+
+| paid     | <u>paid</u> | createtime | label    | docs     |
+| -------- | --------    | --------   | -------- | -------- |
+
+* Friend
+
+| <u>usid</u> | <u>frid</u> | maketime |
+| -----       | --------    | -------- |
 Code
 ===
 
