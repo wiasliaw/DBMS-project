@@ -1,35 +1,19 @@
-import express from 'express';
-import admin from '../libs/admin';
-/**
- * Router for API interface
- */
-function apiroute(adm:admin) {
-  const router = express.Router();
+import { Router, Request, Response } from 'express';
+import { Client } from 'pg';
 
-  router.get('/admin/:link', (req:express.Request, res:express.Response) => {
-    if (req.params['link'] === adm.link) {
-      res.render('admin', { auth: req.cookies['Auth'] });
-    }
-  });
-
-  router.post('/admin', (req:express.Request, res:express.Response) => {
-    const admin = req.body['admin'];
-    const  password = req.body['password'];
-    if (adm.authAdmin(admin, password)) {
-      res.cookie('Auth', 'islogin', {
-        maxAge: 600000,
-      });
-      res.redirect(`/admin/${adm.link}`);
-    }
-    else res.status(403).render('error', { code: 403, msg: 'Login Fail' });
-  });
-
-  router.post('/admin/logout', (req:express.Request, res:express.Response) => {
-    console.log(req.originalUrl);
-    res.clearCookie('Auth');
-    res.json({ redirect: `/admin/${adm.link}` });
+function apiRouter(db:Client) {
+  const router = Router();
+  router.post('/api/query', (req:Request, res:Response) => {
+    const query = req.body['sql'];
+    db.query(query, (err, resp) => {
+      if (err) {
+        console.error(err.stack);
+        res.json({ error: err.stack });
+      } else {
+        res.json({ data: resp.rows });
+      }
+    });
   });
   return router;
 }
-
-export { apiroute as ApiRouter };
+export { apiRouter as ApiRouter };

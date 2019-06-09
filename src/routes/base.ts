@@ -6,8 +6,6 @@ const router = express.Router();
 
 router.get('/', (req:express.Request, res:express.Response) => {
   console.log(req.originalUrl);
-  console.log(req.session);
-  console.log(req.cookies);
   res.render('hello');
 });
 
