@@ -102,6 +102,7 @@ Relation Schema
 
 | <u>usid</u> | <u>frid</u> | maketime |
 | -----       | --------    | -------- |
+
 Code
 ===
 
