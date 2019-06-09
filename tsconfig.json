@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    // base
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    // lib
+    "typeRoots": ["./node_modules/@types"],
+    // rule
+    "strict": true,
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    // path
+    "outDir": "./dist",
+    "rootDir": "./"
+  },
+  "include": [
+    "./src/**/*.ts",
+  ],
+  "exclude": [
+    "./node_modules"
+  ]
+}

@@ -1,0 +1,95 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+body {
+  line-height: 1.5;
+  background-color: #eee;
+  color: #222525;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+/* ejs component */
+.error-main {
+  font-family: monospace !important;
+  letter-spacing: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-main > p {
+  font-size: 1.3em;
+}
+
+.error-main > i {
+  font-size: 18em;
+  color: red;
+}
+
+/* admin */
+.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin > i {
+  font-size: 18em;
+  color: orange;
+  margin: 2rem 2rem;
+}
+.adm-it {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.adm-it > label {
+  margin: 0 !important;
+  text-align: center !important;
+}
+.adm-it > input {
+  color: #222525;
+}
+.adm-but {
+  margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.adm-but > button {
+  margin: 0 !important;
+}
+
+/* console */
+.console {
+  font-size: 1.2rem !important;
+}
+
+/* search */
+.button-warning {
+  background: rgb(255, 150, 90);
+}
+.datalogout {
+  border-radius: 15px;
+}
+.datalogout-success {
+  background: rgb(143, 255, 143);
+}
+.datalogout-fail {
+  background: rgb(255, 100, 100);
+}
+/* align item */
+.alignbox {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}

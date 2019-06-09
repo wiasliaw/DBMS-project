@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DBMS</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+  <% if (!auth) { %>
+    <div class="pure-g">
+      <div class="pure-u-1-8"></div>
+      <div class="pure-u-3-4 admin">
+        <i class="fas fa-shield-alt"></i>
+        <!-- FORM -->
+        <form class="pure-form pure-form-aligned" action="/admin" method="POST">
+          <fieldset>
+            <div class="pure-control-group adm-it">
+              <label for="name">Admin</label>
+              <input id="name" name="admin" type="text" placeholder="Username">
+            </div>
+            <div class="pure-control-group adm-it">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" placeholder="Password">
+            </div>
+            <div class="pure-controls adm-but">
+                <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="pure-g">
+      <!-- left bar -->
+      <div class="pure-u-1-8"></div>
+
+      <!-- middle bar -->
+      <div class="pure-u-3-4">
+        <!-- navbar -->
+        <div class="pure-menu pure-menu-horizontal console alignbox">
+          <ul class="pure-menu-list" class="admin">
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="/" class="pure-menu-link">Home</a>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+              <a href="#" id="menuLink1" class="pure-menu-link">MODE</a>
+              <ul class="pure-menu-children">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">TEXT</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">BUTTON</a></li>
+              </ul>
+            </li>
+            <li class="pure-menu-item">
+              <a id="logout" href="#" class="pure-menu-link">Logout</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- search box -->
+        <h1>Interface</h1>
+        <div id="searchbox" class="alignbox">
+          <form class="pure-form">
+            <h3>SQL input</h3>
+            <input id="textquery" type="text" name="sql">
+            <button id="sqlquery" type="button" class="button-warning pure-button">Search</button>
+          </form>
+        </div>
+        <!-- search interface -->
+        <div id="searchinterface">
+          <h3>SQL Buton</h3>
+          <hr>
+          <!-- select -->
+          <form class="pure-form">
+            <fieldset>
+              <legend>Select</legend>
+              <div class="pure-g">
+                <input class="pure-input-1-4" type="text" placeholder="SELECT" readonly>
+                <input id="interSA" class="pure-input-1-4" type="text" placeholder="attribute" required>
+                <input class="pure-input-1-4" type="text" placeholder="FROM" readonly>
+                <input id="interST" class="pure-input-1-4"type="text" placeholder="table" required>
+              </div>
+              <div class="pure-g">
+                <input class="pure-input-1-4" type="text" placeholder="WHERE" readonly>
+                <input id="interSW" class="pure-input-3-4" type="text" placeholder="condition or other">
+              </div>
+            </fieldset>
+            <button id="interSB" type="button" class="button-warning pure-button">Select</button>
+          </form>
+          <hr>
+          <!-- delete -->
+          <form class="pure-form">
+            <fieldset>
+              <legend>Delete</legend>
+              <div class="pure-g">
+                <input class="pure-input-1-2" type="text" placeholder="DELETE FROM" readonly>
+                <input id="interDT" class="pure-input-1-2"type="text" placeholder="table" required>
+              </div>
+              <div class="pure-g">
+                <input class="pure-input-1-4" type="text" placeholder="WHERE" readonly>
+                <input id="interDW" class="pure-input-3-4" type="text" placeholder="condition or other">
+              </div>
+            </fieldset>
+            <button id="interDB" type="button" class="button-warning pure-button">Delete</button>
+          </form>
+          <!-- update -->
+          <hr>
+          <form class="pure-form">
+            <fieldset>
+              <legend>Update</legend>
+              <div class="pure-g">
+                <input class="pure-input-1-4" type="text" placeholder="UPDATE" readonly>
+                <input id="interUT" class="pure-input-1-4" type="text" placeholder="table" required>
+                <input class="pure-input-1-4" type="text" placeholder="SET" readonly>
+                <input id="interUV" class="pure-input-1-4"type="text" placeholder="value" required>
+              </div>
+              <div class="pure-g">
+                <input class="pure-input-1-4" type="text" placeholder="WHERE" readonly>
+                <input id="interUW" class="pure-input-3-4" type="text" placeholder="condition or other">
+              </div>
+            </fieldset>
+            <button id="interUB" type="button" class="button-warning pure-button">Update</button>
+          </form>
+          <!-- insert -->
+          <hr>
+          <form class="pure-form">
+            <fieldset>
+              <legend>Insert</legend>
+              <div class="pure-g">
+                <input class="pure-input-1-2" type="text" placeholder="INSERT INTO" readonly>
+                <input id="interIT" class="pure-input-1-2"type="text" placeholder="table" required>
+              </div>
+              <div class="pure-g">
+                <input class="pure-input-1-4" type="text" placeholder="VALUES" readonly>
+                <input id="interIV" class="pure-input-3-4" type="text" placeholder="values" required>
+              </div>
+            </fieldset>
+            <button id="interIB" type="button" class="button-warning pure-button">Insert</button>
+          </form>
+        </div>
+        <hr>
+        <!-- data log -->
+        <h1>Data</h1>
+        <div>
+          <div id="dataframe"></div>
+        </div>
+        <!-- schema -->
+        <h1 style="display: none">Table description</h1>
+        <div style="display: none" class="alignbox">
+          <ul>
+            <li>
+              <p>project.user</p>
+              <ul>
+                <li><b>usid</b> (primary key)</li>
+                <li>uname</li>
+                <li>email</li>
+                <li>passwd</li>
+                <li>utype</li>
+                <li>coin</li>
+                <li>roleman</li>
+              </ul>
+            </li>
+            <li>
+              <p>project.page</p>
+              <ul>
+                <li><b>usid</b> (primary key)</li>
+                <li>ltype</li>
+                <li>ptype</li>
+              </ul>
+            </li>
+            <li>
+              <p>project.level</p>
+              <ul>
+                <li><b>usid</b> (primary key)</li>
+                <li>ltype</li>
+                <li>starttime</li>
+                <li>expiretime</li>
+                <li>expirestamp</li>
+              </ul>
+            </li>
+            <li>
+              <p>project.content</p>
+              <ul>
+                <li>paid</li>
+                <li><b>coid</b> (primary key)</li>
+                <li>craetetime</li>
+                <li>label</li>
+                <li>docs</li>
+              </ul>
+            </li>
+            <li>
+              <p>project.friend</p>
+              <ul>
+                <li>usid</li>
+                <li>frid</li>
+                <li>maketime</li>
+                <li><b>primary key(usid, frid)</b></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="height:20px;"></div>
+    <!-- init script -->
+    <script src="/static/main.js"></script>
+  <% } %>
+</body>
+</html>
