@@ -4,8 +4,9 @@
   "description": "course DBMS project",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node ./dist/src/index.js"
+    "build": "rm -rf dist/ && tsc",
+    "start": "node ./dist/src/index.js",
+    "insert": "node ./dist/src/setup.js"
   },
   "repository": {
     "type": "git",

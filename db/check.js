@@ -4,7 +4,7 @@ const client = new Client({
   host: 'localhost',
   password: 'cfgcmapy',
   database: 'project',
-  port: 8001,
+  port: 5432,
 });
 client.connect((err) => {
   if (err) console.log('CONNECT: ', err);

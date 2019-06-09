@@ -23,17 +23,14 @@ function error404handler() {
 }
 class App {
   public app:express.Application;
-  private db: pgClient;
+  public db: pgClient;
 
   constructor() {
     this.app = express();
     this.db = new pgClient(config.db);
     this.passportInit();
-    this.conndb().then(() => {
-      this.init();
-    }).catch(() => {
-      this.init();
-    });
+    this.init();
+    this.conndb();
   }
   private async init() {
     // package
@@ -61,16 +58,12 @@ class App {
   }
 
   private conndb() {
-    return new Promise((resolve, reject) => {
-      this.db.connect((err) => {
-        if (err) {
-          console.error(err);
-          reject();
-        } else {
-          console.info('DB connect');
-          resolve();
-        }
-      });
+    this.db.connect((err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log('connected');
+      }
     });
   }
 

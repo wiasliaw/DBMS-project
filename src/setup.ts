@@ -1,5 +1,5 @@
-const { Client } = require('pg');
-const Data = require('./data');
+import { Client } from 'pg';
+import { Data } from './data';
 const client = new Client({
   user: 'postgres',
   host: 'localhost',
@@ -14,53 +14,59 @@ client.connect((err) => {
 /**
  * INSERT 10 data into each table
  */
-Data.user.forEach(data => {
+
+Data.user.forEach((ele:any) => {
   const query = {
     text: 'INSERT INTO project.user VALUES($1, $2, $3, $4, $5, $6, $7);',
-    values: data, 
-  }
+    values: ele,
+  };
   client.query(query, (err, res) => {
-    if(err) console.error(err.stack);
+    if (err) console.error(err.stack);
+    else console.log(res.rowCount);
   });
 });
 
-Data.page.forEach(data => {
+Data.page.forEach((ele:any) => {
   const query = {
     text: 'INSERT INTO project.page VALUES($1, $2, $3);',
-    values: data, 
-  }
+    values: ele,
+  };
   client.query(query, (err, res) => {
-    if(err) console.error(err.stack);
+    if (err) console.error(err.stack);
+    else console.log(res.rowCount);
   });
 });
 
-Data.level.forEach(data => {
+Data.level.forEach((ele:any) => {
   const query = {
     text: 'INSERT INTO project.level VALUES($1, $2, $3, $4, $5);',
-    values: data, 
-  }
+    values: ele,
+  };
   client.query(query, (err, res) => {
-    if(err) console.error(err.stack);
+    if (err) console.error(err.stack);
+    else console.log(res.rowCount);
   });
 });
 
-Data.content.forEach(data => {
+Data.content.forEach((ele:any) => {
   const query = {
     text: 'INSERT INTO project.content VALUES($1, $2, $3, $4, $5);',
-    values: data, 
-  }
+    values: ele,
+  };
   client.query(query, (err, res) => {
-    if(err) console.error(err.stack);
+    if (err) console.error(err.stack);
+    else console.log(res.rowCount);
   });
 });
 
-Data.friend.forEach(data => {
+Data.friend.forEach((ele:any) => {
   const query = {
     text: 'INSERT INTO project.friend VALUES($1, $2, $3);',
-    values: data, 
-  }
+    values: ele,
+  };
   client.query(query, (err, res) => {
-    if(err) console.error(err.stack);
-    if(data==Data.friend[Data.friend.length-1]) client.end();
+    if (err) console.error(err.stack);
+    else console.log(res.rowCount);
+    if (ele === Data.friend[Data.friend.length - 1]) client.end();
   });
 });
