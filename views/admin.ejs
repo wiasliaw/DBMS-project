@@ -141,14 +141,52 @@
           </form>
         </div>
         <hr>
+        <!-- button -->
+        <div class="buttonlist">
+          <div class="pure-g">
+            <div class="pure-u-1-6 buttonflex">
+              <span style="text-align: center;">COUNT</span>
+              <button class="pure-button" id="count">How Many User</button>
+              <span style="text-align: center;">IN</span>
+              <button class="pure-button" id="in">Pages Content</button>
+            </div>
+            <div class="pure-u-1-6 buttonflex">
+              <span style="text-align: center;">SUM</span>
+              <button class="pure-button" id="sum">Total Coin of User</button>
+              <span style="text-align: center;">NOT IN</span>
+              <button class="pure-button" id="notin">Admin's Pages</button>
+            </div>
+            <div class="pure-u-1-6 buttonflex">
+              <span style="text-align: center;">MAX</span>
+              <button class="pure-button" id="max">the Richest User</button>
+              <span style="text-align: center;">EXISTS</span>
+              <button class="pure-button" id="exist">Paid User</button>
+            </div>
+            <div class="pure-u-1-6 buttonflex">
+              <span style="text-align: center;">MIN</span>
+              <button class="pure-button" id="min">the poorest User</button>
+              <span style="text-align: center;">NOT EXISTS</span>
+              <button class="pure-button" id="notexist">Free User</button>
+            </div>
+            <div class="pure-u-1-6 buttonflex">
+              <span style="text-align: center;">AVG</span>
+              <button class="pure-button" id="avg">User Avg Coin</button>
+            </div>
+            <div class="pure-u-1-6 buttonflex">
+              <span style="text-align: center;">HAVING</span>
+              <button class="pure-button" id="having">Users Friend</button>
+            </div>
+          </div>
+        </div>
+        <hr>
         <!-- data log -->
         <h1>Data</h1>
         <div>
           <div id="dataframe"></div>
         </div>
         <!-- schema -->
-        <h1 style="display: none">Table description</h1>
-        <div style="display: none" class="alignbox">
+        <h1>Table description</h1>
+        <div class="alignbox">
           <ul>
             <li>
               <p>project.user</p>
@@ -165,8 +203,8 @@
             <li>
               <p>project.page</p>
               <ul>
-                <li><b>usid</b> (primary key)</li>
-                <li>ltype</li>
+                <li>usid</li>
+                <li><b>paid</b> (primary key)</li>
                 <li>ptype</li>
               </ul>
             </li>

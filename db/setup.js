@@ -2,7 +2,7 @@ const { Client } = require('pg');
 const Data = require('./data');
 const client = new Client({
   user: 'postgres',
-  host: 'localhost',
+  host: 'postgres',
   password: 'cfgcmapy',
   database: 'project',
   port: 5432,

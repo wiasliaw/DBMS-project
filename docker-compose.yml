@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file: .env
+    environment:
+      WAIT_HOSTS: postgres:5432
+    links:
+      - postgres
+    volumes:
+      - .:/usr/app/
+
+  postgres:
+    image: bitnami/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRESQL_USERNAME: postgres
+      POSTGRESQL_PASSWORD: cfgcmapy
+      POSTGRESQL_DATABASE: project
+    hostname: postgres
+    volumes:
+      - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql"

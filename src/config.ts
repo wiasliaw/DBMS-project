@@ -7,7 +7,7 @@ const config = {
   db: {
     password: 'cfgcmapy',
     user: 'postgres',
-    host: 'localhost',
+    host: 'postgres',
     database: 'project',
     port: 5432,
   },

@@ -17,6 +17,36 @@
   document.getElementById('interIB').addEventListener('click', function(){
     sqlinsert();
   });
+  document.getElementById('count').addEventListener('click', function(){
+    sqlcount();
+  });
+  document.getElementById('sum').addEventListener('click', function(){
+    sqlsum();
+  });
+  document.getElementById('max').addEventListener('click', function(){
+    sqlmax();
+  });
+  document.getElementById('min').addEventListener('click', function(){
+    sqlmin();
+  });
+  document.getElementById('avg').addEventListener('click', function(){
+    sqlavg();
+  });
+  document.getElementById('having').addEventListener('click', function(){
+    sqlhaving();
+  });
+  document.getElementById('in').addEventListener('click', function(){
+    sqlin();
+  });
+  document.getElementById('notin').addEventListener('click', function(){
+    sqlnotin();
+  });
+  document.getElementById('exist').addEventListener('click', function(){
+    sqlexist();
+  });
+  document.getElementById('notexist').addEventListener('click', function(){
+    sqlnotexist();
+  });
 })();
 // logout button
 function postLogout() {
@@ -26,6 +56,56 @@ function postLogout() {
   .then((resp) => {
     window.location.href = resp.redirect;
   });
+}
+// sql button count
+function sqlin(){
+  const query = "SELECT * FROM project.content WHERE paid IN (SELECT paid FROM project.page)";
+  postQuery(query);
+}
+// sql button count
+function sqlnotin(){
+  const query = "SELECT * FROM project.page WHERE usid NOT IN (SELECT usid FROM project.user WHERE roleman='guess')";
+  postQuery(query);
+}
+// sql button count
+function sqlexist(){
+  const query = "SELECT * FROM project.user u WHERE EXISTS (SELECT * FROM project.level l WHERE u.usid=l.usid AND l.ltype!='free  ')";
+  postQuery(query);
+}
+// sql button count
+function sqlnotexist(){
+  const query = "SELECT * FROM project.user u WHERE NOT EXISTS (SELECT * FROM project.level l WHERE u.usid=l.usid AND l.ltype!='free  ')";
+  postQuery(query);
+}
+// sql button count
+function sqlcount(){
+  const query = "SELECT COUNT(usid) FROM project.user WHERE roleman='guess'";
+  postQuery(query);
+}
+// sql button sum
+function sqlsum(){
+  const query = "SELECT SUM(coin) FROM project.user WHERE roleman='guess'";
+  postQuery(query);
+}
+// sql button max
+function sqlmax(){
+  const query = "SELECT * FROM project.user u WHERE u.coin = (SELECT MAX(coin) FROM project.user WHERE roleman='guess') AND roleman='guess';";
+  postQuery(query);
+}
+// sql button min
+function sqlmin(){
+  const query = "SELECT * FROM project.user u WHERE u.coin=(SELECT MIN(coin) FROM project.user WHERE roleman='guess') AND roleman='guess';";
+  postQuery(query);
+}
+// sql button avg
+function sqlavg(){
+  const query = "SELECT AVG(coin) FROM project.user WHERE roleman='guess';";
+  postQuery(query);
+}
+// sql button having
+function sqlhaving(){
+  const query = "SELECT d.usid,d.uname,d.frid,u.uname AS fname FROM (SELECT project.user.usid,uname,frid FROM project.user INNER JOIN project.friend on project.user.usid=project.friend.usid) d INNER JOIN project.user u ON d.frid=u.usid";
+  postQuery(query);
 }
 // sql input
 function sqlinput(){

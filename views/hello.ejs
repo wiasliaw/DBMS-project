@@ -9,6 +9,20 @@
   <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
-  <h1>Hello World</h1>
+  <div class="pure-g">
+    <div class="pure-u-1-8"></div>
+    <div class="pure-u-3-4">
+      <h1>Hello World</h1>
+      <p>Will Redirect to <code>/admin<code></p>
+    </div>
+    <div class="pure-u-1-8"></div>
+  </div>
+  <script>
+    (function(){
+      setTimeout(function(){
+        window.location.href = '/admin';
+      }, 5000);
+    })();
+  </script>
 </body>
 </html>

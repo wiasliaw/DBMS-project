@@ -1,12 +1,8 @@
 import { Client } from 'pg';
 import { Data } from './data';
-const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  password: 'cfgcmapy',
-  database: 'project',
-  port: 5432,
-});
+import config from './config';
+
+const client = new Client(config.db);
 client.connect((err) => {
   console.log('CONNECT: ', err);
 });
