@@ -1,5 +1,12 @@
+---
+title: 'DBMS Project'
+disqus: hackmd
+---
+
 DBMS Project
 ===
+
+A simple DBMS for Note, focus on admin console platform links to a database.
 
 ## Table of Contents
 
@@ -65,11 +72,25 @@ Table Description
 5. Friend
     * usid -> User.id_1
     * frid -> User.id_2
-    * makedate : string
+    * maketime : string
 > This table is to record user interaction with other user
 > **usid** a User.usid, means who invite others.
 > **frid** a User.usid, means who was invited.
 > **makedate** when the relationship was create.
+
+Relation Description
+---
+
+1. User - Level
+> User has a relationship with Level, means that user grant a level for somw permission.
+2. User - Page
+> User has a relationship with Page, means that user has this page.
+3. User - User - Friend
+> User has a relationship with itself and Friend, means that user can make friend with other.
+4. Page - Content
+> Page has a relationship with Content, means that page has some content.
+5. User - User - Page
+> User has a relationship with itself and Page, means that user can translate the page's ownership to the other.
 
 ER-Model
 ---
@@ -112,12 +133,8 @@ Code
 > images: [bitnami/postgresql](https://github.com/bitnami/bitnami-docker-postgresql)
 
 ```bash=
-# Start Postgresql Service
-$ ./db/run.sh
-# Insert Fake Data
-$ npm run insert
-# Start Web Service
-$ npm run build && npm run start
+# docker compose
+$ docker-compose up --build
 ```
 ## Structure
 ![](https://i.imgur.com/AEVSnxL.png)
