@@ -1,8 +1,3 @@
----
-title: 'DBMS Project'
-disqus: hackmd
----
-
 DBMS Project
 ===
 
